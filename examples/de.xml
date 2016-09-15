@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<document>
+  <s id="1">
+    <time id="T1S" value="00:00:17,400" />
+    <w id="1.1">&lt;i&gt;Buck</w>
+    <w id="1.2">Rogers</w>
+    <w id="1.3">im</w>
+    <w id="1.4">20.</w>
+    <w id="1.5">Jahrhundert</w>
+    <w id="1.6">!</w>
+    <w id="1.7">&lt;/</w>
+    <w id="1.8">i&gt;</w>
+    <time id="T1E" value="00:00:22,800" />
+  </s>
+  <s id="2">
+    <time id="T2S" value="00:00:24,200" />
+    <w id="2.1">&lt;i&gt;Buck</w>
+    <w id="2.2">Rogers</w>
+    <w id="2.3">erlebt</w>
+    <w id="2.4">seine</w>
+    <w id="2.5">Abenteuer&lt;/</w>
+    <w id="2.6">i&gt;</w>
+    <w id="2.7">&lt;i&gt;im</w>
+    <w id="2.8">erstaunlichen</w>
+    <w id="2.9">20.</w>
+    <w id="2.10">Jahrhundert</w>
+    <w id="2.11">.</w>
+    <w id="2.12">&lt;/</w>
+    <w id="2.13">i&gt;</w>
+    <time id="T2E" value="00:00:28,000" />
+  </s>
+  <s id="3">
+    <time id="T3S" value="00:00:28,400" />
+    <w id="3.1">&lt;i&gt;Wir</w>
+    <w id="3.2">legen</w>
+    <w id="3.3">den</w>
+    <w id="3.4">Schalter</w>
+    <w id="3.5">um,</w>
+    <w id="3.6">&lt;/</w>
+    <w id="3.7">i&gt;</w>
+    <w id="3.8">&lt;i&gt;reisen</w>
+    <w id="3.9">durch</w>
+    <w id="3.10">die</w>
+    <w id="3.11">Zeit&lt;/</w>
+    <w id="3.12">i&gt;</w>
+    <time id="T3E" value="00:00:31,000" />
+    <time id="T4S" value="00:00:31,200" />
+    <w id="3.13">&lt;i&gt;und</w>
+    <w id="3.14">erleben</w>
+    <w id="3.15">mit</w>
+    <w id="3.16">Buck</w>
+    <w id="3.17">und</w>
+    <w id="3.18">seinen</w>
+    <w id="3.19">Freunden&lt;/</w>
+    <w id="3.20">i&gt;</w>
+    <w id="3.21">&lt;i&gt;die</w>
+    <w id="3.22">wunderbare</w>
+    <w id="3.23">Welt</w>
+    <w id="3.24">der</w>
+    <w id="3.25">Zukunft</w>
+    <w id="3.26">.</w>
+    <w id="3.27">&lt;/</w>
+    <w id="3.28">i&gt;</w>
+    <time id="T4E" value="00:00:35,200" />
+  </s>
+  <s id="4">
+    <time id="T5S" value="00:00:35,400" />
+    <w id="4.1">&lt;i&gt;Eine</w>
+    <w id="4.2">Welt</w>
+    <w id="4.3">,</w>
+    <w id="4.4">in</w>
+    <w id="4.5">der</w>
+    <w id="4.6">viele</w>
+    <w id="4.7">unserer&lt;/</w>
+    <w id="4.8">i&gt;</w>
+    <w id="4.9">&lt;i&gt;wissenschaftlichen</w>
+    <w id="4.10">Träume</w>
+    <w id="4.11">wahr</w>
+    <w id="4.12">werden</w>
+    <w id="4.13">.</w>
+    <w id="4.14">&lt;/</w>
+    <w id="4.15">i&gt;</w>
+    <time id="T5E" value="00:00:39,000" />
+  </s>
+  <s id="5">
+    <time id="T6S" value="00:00:39,200" />
+    <w id="5.1">&lt;i&gt;An</w>
+    <w id="5.2">Buck</w>
+    <w id="5.3">ist</w>
+    <w id="5.4">nichts</w>
+    <w id="5.5">Übernatürliches</w>
+    <w id="5.6">.</w>
+    <w id="5.7">&lt;/</w>
+    <w id="5.8">i&gt;</w>
+    <time id="T6E" value="00:00:42,200" />
+  </s>
+</document>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<document>
+  <s id="1">
+    <time id="T1S" value="00:04:00,008" />
+    <w id="1.1">Hoi</w>
+    <w id="1.2">Billy</w>
+    <w id="1.3">,</w>
+    <w id="1.4">wil</w>
+    <w id="1.5">je</w>
+    <w id="1.6">nog</w>
+    <w id="1.7">wat</w>
+    <w id="1.8">trucjes</w>
+    <w id="1.9">doen</w>
+    <w id="1.10">?</w>
+    <time id="T1E" value="00:04:02,191" />
+  </s>
+  <s id="2">
+    <time id="T2S" value="00:04:02,292" />
+    <w id="2.1">Ik</w>
+    <w id="2.2">kan</w>
+    <w id="2.3">niet</w>
+    <w id="2.4">.</w>
+  </s>
+  <s id="3">
+    <w id="3.1">Ik</w>
+    <w id="3.2">moet</w>
+    <w id="3.3">gaan</w>
+    <w id="3.4">.</w>
+    <time id="T2E" value="00:04:04,085" />
+  </s>
+  <s id="4">
+    <time id="T3S" value="00:04:04,627" />
+    <w id="4.1">Kom</w>
+    <w id="4.2">,</w>
+    <w id="4.3">nog</w>
+    <w id="4.4">één</w>
+    <w id="4.5">.</w>
+  </s>
+  <s id="5">
+    <w id="5.1">Ik</w>
+    <w id="5.2">zal</w>
+    <w id="5.3">zaterdag</w>
+    <w id="5.4">op</w>
+    <w id="5.5">stap</w>
+    <w id="5.6">gaan</w>
+    <w id="5.7">met</w>
+    <w id="5.8">je</w>
+    <w id="5.9">.</w>
+    <time id="T3E" value="00:04:08,741" />
+  </s>
+  <s id="6">
+    <time id="T4S" value="00:04:08,976" />
+    <w id="6.1">Als</w>
+    <w id="6.2">je</w>
+    <w id="6.3">naam</w>
+    <w id="6.4">niet</w>
+    <w id="6.5">Hoover</w>
+    <w id="6.6">was</w>
+    <w id="6.7">...</w>
+  </s>
+  <s id="7">
+    <w id="7.1">Ja</w>
+    <w id="7.2">,</w>
+    <w id="7.3">oké</w>
+    <w id="7.4">.</w>
+    <time id="T4E" value="00:04:12,140" />
+  </s>
+  <s id="8">
+    <time id="T5S" value="00:04:23,366" />
+    <w id="8.1">Je</w>
+    <w id="8.2">weet</w>
+    <w id="8.3">dat</w>
+    <w id="8.4">ik</w>
+    <w id="8.5">geen</w>
+    <w id="8.6">joints</w>
+    <w id="8.7">rook</w>
+    <w id="8.8">.</w>
+  </s>
+  <s id="9">
+    <w id="9.1">Ze</w>
+    <w id="9.2">beschadigen</w>
+    <w id="9.3">je</w>
+    <w id="9.4">geheugen</w>
+    <w id="9.5">.</w>
+    <time id="T5E" value="00:04:25,667" />
+  </s>
+  <s id="10">
+    <time id="T6S" value="00:04:26,902" />
+    <w id="10.1">Nee</w>
+    <w id="10.2">,</w>
+    <w id="10.3">dat</w>
+    <w id="10.4">is</w>
+    <w id="10.5">niet</w>
+    <w id="10.6">waar</w>
+    <w id="10.7">.</w>
+    <time id="T6E" value="00:04:28,588" />
+  </s>
+</document>

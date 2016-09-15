@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<document>
+  <s id="1">
+    <time id="T1S" value="00:00:13,320" />
+    <w id="1.1">En</w>
+    <w id="1.2">cet</w>
+    <w id="1.3">instant</w>
+    <w id="1.4">,</w>
+    <w id="1.5">des</w>
+    <w id="1.6">terroristes</w>
+    <w id="1.7">veulent</w>
+    <w id="1.8">tuer</w>
+    <w id="1.9">un</w>
+    <w id="1.10">candidat</w>
+    <w id="1.11">à</w>
+    <w id="1.12">la</w>
+    <w id="1.13">Présidence</w>
+    <w id="1.14">.</w>
+    <time id="T1E" value="00:00:18,560" />
+  </s>
+  <s id="2">
+    <time id="T2S" value="00:00:18,640" />
+    <w id="2.1">Ma</w>
+    <w id="2.2">femme</w>
+    <w id="2.3">et</w>
+    <w id="2.4">ma</w>
+    <w id="2.5">fille</w>
+    <w id="2.6">sont</w>
+    <w id="2.7">aussi</w>
+    <w id="2.8">visées</w>
+    <w id="2.9">.</w>
+    <time id="T2E" value="00:00:21,120" />
+  </s>
+  <s id="3">
+    <time id="T3S" value="00:00:21,200" />
+    <w id="3.1">Et</w>
+    <w id="3.2">certains</w>
+    <w id="3.3">de</w>
+    <w id="3.4">mes</w>
+    <w id="3.5">collègues</w>
+    <w id="3.6">sont</w>
+    <w id="3.7">peut-</w>
+    <w id="3.8">être</w>
+    <w id="3.9">impliqués</w>
+    <w id="3.10">dans</w>
+    <w id="3.11">cette</w>
+    <w id="3.12">affaire</w>
+    <w id="3.13">.</w>
+    <time id="T3E" value="00:00:25,280" />
+  </s>
+  <s id="4">
+    <time id="T4S" value="00:00:25,360" />
+    <w id="4.1">Je</w>
+    <w id="4.2">suis</w>
+    <w id="4.3">l'</w>
+    <w id="4.4">agent</w>
+    <w id="4.5">fédéral</w>
+    <w id="4.6">Jack</w>
+    <w id="4.7">Bauer</w>
+    <w id="4.8">.</w>
+  </s>
+  <s id="5">
+    <w id="5.1">Cette</w>
+    <w id="5.2">journée</w>
+    <w id="5.3">est</w>
+    <w id="5.4">la</w>
+    <w id="5.5">plus</w>
+    <w id="5.6">longue</w>
+    <w id="5.7">de</w>
+    <w id="5.8">ma</w>
+    <w id="5.9">vie</w>
+    <w id="5.10">.</w>
+    <time id="T4E" value="00:00:30,920" />
+  </s>
+  <s id="6">
+    <time id="T5S" value="00:00:31,920" />
+    <w id="6.1">Précédemment</w>
+    <w id="6.2">dans</w>
+    <w id="6.3">24</w>
+    <w id="6.4">.</w>
+    <time id="T5E" value="00:00:33,560" />
+  </s>
+  <s id="7">
+    <time id="T6S" value="00:00:33,880" />
+    <w id="7.1">Victor</w>
+    <w id="7.2">Drazen</w>
+    <w id="7.3">va</w>
+    <w id="7.4">vous</w>
+    <w id="7.5">téléphoner</w>
+    <w id="7.6">.</w>
+  </s>
+  <s id="8">
+    <w id="8.1">Accepter</w>
+    <w id="8.2">de</w>
+    <w id="8.3">coopérer</w>
+    <w id="8.4">.</w>
+    <time id="T6E" value="00:00:38,200" />
+  </s>
+</document>

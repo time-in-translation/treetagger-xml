@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<document>
+  <s id="1">
+    <time id="T1S" value="00:00:59,280" />
+    <w id="1.1">Sr</w>
+    <w id="1.2">.</w>
+  </s>
+  <s id="2">
+    <w id="2.1">Bond</w>
+    <w id="2.2">,</w>
+    <w id="2.3">Sr</w>
+    <w id="2.4">.</w>
+  </s>
+  <s id="3">
+    <w id="3.1">Bond</w>
+    <w id="3.2">,</w>
+    <w id="3.3">Qué</w>
+    <w id="3.4">bueno</w>
+    <w id="3.5">que</w>
+    <w id="3.6">lo</w>
+    <w id="3.7">encontré</w>
+    <w id="3.8">.</w>
+    <time id="T1E" value="00:01:02,200" />
+  </s>
+  <s id="4">
+    <time id="T2S" value="00:01:02,280" />
+    <w id="4.1">Llamaron</w>
+    <w id="4.2">de</w>
+    <w id="4.3">su</w>
+    <w id="4.4">oficina</w>
+    <w id="4.5">.</w>
+  </s>
+  <s id="5">
+    <w id="5.1">Estarán</w>
+    <w id="5.2">enviando</w>
+    <w id="5.3">un</w>
+    <w id="5.4">helicóptero</w>
+    <w id="5.5">para</w>
+    <w id="5.6">recogerlo</w>
+    <w id="5.7">.</w>
+    <time id="T2E" value="00:01:05,640" />
+  </s>
+  <s id="6">
+    <time id="T3S" value="00:01:05,720" />
+    <w id="6.1">Algún</w>
+    <w id="6.2">tipo</w>
+    <w id="6.3">de</w>
+    <w id="6.4">emergencia</w>
+    <w id="6.5">.</w>
+    <time id="T3E" value="00:01:07,400" />
+  </s>
+  <s id="7">
+    <time id="T4S" value="00:01:07,480" />
+    <w id="7.1">Generalmente</w>
+    <w id="7.2">lo</w>
+    <w id="7.3">es</w>
+    <w id="7.4">.</w>
+  </s>
+  <s id="8">
+    <w id="8.1">Gracias</w>
+    <w id="8.2">.</w>
+    <time id="T4E" value="00:01:09,480" />
+  </s>
+  <s id="9">
+    <time id="T5S" value="00:02:29,280" />
+    <w id="9.1">Buenas</w>
+    <w id="9.2">tardes</w>
+    <w id="9.3">,</w>
+    <w id="9.4">Sr</w>
+    <w id="9.5">.</w>
+  </s>
+  <s id="10">
+    <w id="10.1">Bond</w>
+    <w id="10.2">.</w>
+    <time id="T5E" value="00:02:31,600" />
+  </s>
+  <s id="11">
+    <time id="T6S" value="00:02:31,640" />
+    <w id="11.1">No</w>
+    <w id="11.2">se</w>
+    <w id="11.3">preocupe</w>
+    <w id="11.4">por</w>
+    <w id="11.5">el</w>
+    <w id="11.6">piloto</w>
+    <w id="11.7">.</w>
+    <time id="T6E" value="00:02:34,280" />
+  </s>
+  <s id="12">
+    <time id="T7S" value="00:02:34,360" />
+    <w id="12.1">Era</w>
+    <w id="12.2">uno</w>
+    <w id="12.3">de</w>
+    <w id="12.4">los</w>
+    <w id="12.5">menos</w>
+    <w id="12.6">útiles</w>
+    <w id="12.7">.</w>
+    <time id="T7E" value="00:02:36,400" />
+  </s>
+</document>
