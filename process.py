@@ -5,8 +5,9 @@ import string
 from lxml import etree
 from treetaggerwrapper import TreeTagger, NotTag, make_tags
 
-# Define the pos attribute per language, to stay in line with EuroParl. TODO: is this necessary?
-POS_TAGS = {'de': 'tree', 'en': 'pos', 'es': 'tree', 'fr': 'pos', 'nl': 'tree'}
+# Define the pos attribute per language, to stay in line with EuroParl.
+POS_TAGS = {'de': 'tree', 'en': 'tree', 'es': 'tree', 'fr': 'pos', 'nl': 'tree'}
+SENT_TAGS = {'de': '$.', 'en': 'SENT', 'es': 'FS', 'fr': 'SENT', 'nl': '$.'}
 
 # Parse the command-line arguments
 parser = argparse.ArgumentParser(description='Tag/lemmatize .xml-files.')
@@ -23,13 +24,16 @@ for in_file in args.input_files:
     for sentence in tree.xpath('//s'):
         # Retrieve all words in the sentence
         s = ''
+        prev_word = ' '
         words = sentence.xpath('./w')
         for word in words:
-            if word.text[0] not in string.punctuation:  # Dealing with things like "'s", "Mr." and "n't"
-                s += ' '
-            if args.language = 'en' and word.text == '\'am':  # This is to deal with "ma'am", that is tokenized incorrectly.
-                s += ' '
-            s += word.text
+            if word.text[0] in [',', '.', '\'']:  # Dealing with things like "'s", "Mr." and "n't"
+                s += word.text
+            elif args.language == 'fr' and prev_word[-1] in ['\'']:  # Dealing with things like "j'ai"
+                s += word.text
+            else:
+                s += ' ' + word.text
+            prev_word = s
         
         # Tag/lemmatize the sentence
         tags = make_tags(tagger.tag_text(unicode(s)))
@@ -38,10 +42,16 @@ for in_file in args.input_files:
         for n, word in enumerate(words):
             try:
                 if type(tags[n]) != NotTag:
-                    word.attrib[POS_TAGS.get(args.language, 'pos')] = tags[n].pos
+                    word.attrib[POS_TAGS.get(args.language, 'tree')] = tags[n].pos
                     word.attrib['lem'] = tags[n].lemma
             except IndexError:
-                print s
+                # The end of a sentence is sometimes not properly recognized, deal as a special case.
+                if word.text == '.':
+                    word.attrib[POS_TAGS.get(args.language, 'tree')] = SENT_TAGS.get(args.language, 'SENT')
+                    word.attrib['lem'] = '.'
+                # Otherwise, print the sentence
+                else:
+                    print u'IndexError: {}'.format(s)
 
     # Output the result to a file
     filename, ext = os.path.splitext(in_file)
