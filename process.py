@@ -1,5 +1,6 @@
 import argparse
 import os
+import string
 
 from lxml import etree
 from treetaggerwrapper import TreeTagger, NotTag, make_tags
@@ -24,16 +25,23 @@ for in_file in args.input_files:
         s = ''
         words = sentence.xpath('./w')
         for word in words:
-            s += word.text + ' '
+            if word.text[0] not in string.punctuation:  # Dealing with things like "'s", "Mr." and "n't"
+                s += ' '
+            if args.language = 'en' and word.text == '\'am':  # This is to deal with "ma'am", that is tokenized incorrectly.
+                s += ' '
+            s += word.text
         
         # Tag/lemmatize the sentence
         tags = make_tags(tagger.tag_text(unicode(s)))
 
         # Add the tags and lemmata back to the words
         for n, word in enumerate(words):
-            if type(tags[n]) != NotTag:
-                word.attrib[POS_TAGS.get(args.language, 'pos')] = tags[n].pos
-                word.attrib['lem'] = tags[n].lemma
+            try:
+                if type(tags[n]) != NotTag:
+                    word.attrib[POS_TAGS.get(args.language, 'pos')] = tags[n].pos
+                    word.attrib['lem'] = tags[n].lemma
+            except IndexError:
+                print s
 
     # Output the result to a file
     filename, ext = os.path.splitext(in_file)
