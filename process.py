@@ -34,6 +34,10 @@ for in_file in args.input_files:
             else:
                 s += ' ' + word.text
             prev_word = s
+       
+        # Special case for Dutch with cases like "'s middags".
+        if args.language == 'nl':
+            s = s.replace('\'s ', ' des ')
         
         # Tag/lemmatize the sentence
         tags = make_tags(tagger.tag_text(unicode(s)))
