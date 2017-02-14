@@ -38,6 +38,12 @@ for in_file in args.input_files:
         # Special case for Dutch with cases like "'s middags".
         if args.language == 'nl':
             s = s.replace('\'s ', ' des ')
+        # Special case for French with cases like "aujourd'hui" and "M."
+        if args.language == 'fr':
+            s = s.replace('aujourd\'hui', 'aujourd\' hui')
+            s = s.replace('Aujourd\'hui', 'Aujourd hui')
+            
+            s = s.replace('M.', 'Mr')
         
         # Tag/lemmatize the sentence
         tags = make_tags(tagger.tag_text(unicode(s)))
