@@ -1,13 +1,12 @@
 import argparse
 import os
-import string
 
 from lxml import etree
 from treetaggerwrapper import TreeTagger, NotTag, make_tags
 
 # Define the pos attribute per language, to stay in line with EuroParl.
-POS_TAGS = {'de': 'tree', 'en': 'tree', 'es': 'tree', 'fr': 'pos', 'nl': 'tree'}
-SENT_TAGS = {'de': '$.', 'en': 'SENT', 'es': 'FS', 'fr': 'SENT', 'nl': '$.'}
+POS_TAGS = {'de': 'tree', 'en': 'tree', 'es': 'tree', 'fr': 'pos', 'it': 'pos', 'nl': 'tree'}
+SENT_TAGS = {'de': '$.', 'en': 'SENT', 'es': 'FS', 'fr': 'SENT', 'it': 'SENT', 'nl': '$.'}
 
 # Parse the command-line arguments
 parser = argparse.ArgumentParser(description='Tag/lemmatize .xml-files.')
@@ -29,11 +28,11 @@ for in_file in args.input_files:
         for word in words:
             if word.text[0] in [',', '.', '\'']:  # Dealing with things like "'s", "Mr." and "n't"
                 s += word.text
-            elif args.language == 'fr' and prev_word[-1] in ['\'']:  # Dealing with things like "j'ai"
+            elif args.language in ['fr', 'it'] and prev_word[-1] in ['\'']:  # Dealing with things like "j'ai"
                 s += word.text
             else:
                 s += ' ' + word.text
-            prev_word = s
+            prev_word = word.text
        
         # Special case for Dutch with cases like "'s middags".
         if args.language == 'nl':
@@ -44,6 +43,17 @@ for in_file in args.input_files:
             s = s.replace('Aujourd\'hui', 'Aujourd hui')
             
             s = s.replace('M.', 'Mr')
+        if args.language == 'it':
+            s = s.replace('C\'', 'Ce ')
+            s = s.replace('c\'', 'ce ')
+            s = s.replace('N\'', 'Ne ')
+            s = s.replace('n\'', 'ne ')
+            s = s.replace('v\'', 've ')
+            s = s.replace('quell\'', 'quelle ')
+            s = s.replace('tant\'', 'tante ')
+
+            s = s.replace('po\'', 'poco \' ')
+            s = s.replace('di\'', 'di \' ')
         
         # Tag/lemmatize the sentence
         tags = make_tags(tagger.tag_text(unicode(s)))
