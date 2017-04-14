@@ -5,8 +5,8 @@ from lxml import etree
 from treetaggerwrapper import TreeTagger, NotTag, make_tags
 
 # Define the pos attribute per language, to stay in line with EuroParl.
-POS_TAGS = {'de': 'tree', 'en': 'tree', 'es': 'tree', 'fr': 'pos', 'it': 'pos', 'nl': 'tree'}
-SENT_TAGS = {'de': '$.', 'en': 'SENT', 'es': 'FS', 'fr': 'SENT', 'it': 'SENT', 'nl': '$.'}
+POS_TAGS = {'de': 'tree', 'en': 'tree', 'es': 'tree', 'fr': 'pos', 'it': 'pos', 'nl': 'tree', 'pl': 'tree'}
+SENT_TAGS = {'de': '$.', 'en': 'SENT', 'es': 'FS', 'fr': 'SENT', 'it': 'SENT', 'nl': '$.', 'pl': 'interp'}
 
 # Parse the command-line arguments
 parser = argparse.ArgumentParser(description='Tag/lemmatize .xml-files.')
