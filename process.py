@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import argparse
 import os
 
@@ -30,6 +32,8 @@ for in_file in args.input_files:
                 s += word.text
             elif args.language in ['fr', 'it'] and prev_word[-1] in ['\'']:  # Dealing with things like "j'ai"
                 s += word.text
+            elif args.language in ['fr'] and word.text.endswith(('-toi','-vous', '-ci', u'-là')):  # Dealing with things like "voulez-vous"
+                s += ' ' + word.text.split('-')[0].lower()
             else:
                 s += ' ' + word.text
             prev_word = word.text
@@ -37,13 +41,17 @@ for in_file in args.input_files:
         # Special case for Dutch with cases like "'s middags".
         if args.language == 'nl':
             s = s.replace('\'s ', ' des ')
-        # Special case for French with cases like "aujourd'hui" and "M."
-        if args.language == 'fr':
+        # Special cases for French
+        elif args.language == 'fr':
             s = s.replace('aujourd\'hui', 'aujourd\' hui')
             s = s.replace('Aujourd\'hui', 'Aujourd hui')
+
+            s = s.replace('d\'abord', 'de abord')
             
             s = s.replace('M.', 'Mr')
-        if args.language == 'it':
+            s = s.replace('X.', 'X')
+        # Special cases for Italian
+        elif args.language == 'it':
             s = s.replace('C\'', 'Ce ')
             s = s.replace('c\'', 'ce ')
             s = s.replace('N\'', 'Ne ')
