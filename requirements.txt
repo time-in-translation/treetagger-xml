@@ -4,6 +4,6 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
-lxml==3.6.4
-six==1.10.0
+lxml==4.1.1
+six==1.11.0
 treetaggerwrapper==2.2.4
