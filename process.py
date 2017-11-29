@@ -41,9 +41,9 @@ def from_xml(input_files, language):
             for word in words:
                 if word.text[0] in [',', '.', '\'']:  # Dealing with things like "'s", "Mr." and "n't"
                     s += word.text
-                elif language in ['fr', 'it'] and prev_word[-1] in ['\'']:  # Dealing with things like "j'ai"
+                elif language in ['fr', 'it'] and len(prev_word) > 1 and prev_word[-1] in ['\'']:  # Dealing with things like "j'ai"
                     s += word.text
-                elif language in ['fr'] and word.text.endswith(('-toi','-vous', '-ci', u'-là')):  # Dealing with things like "voulez-vous"
+                elif language in ['fr'] and word.text.endswith(('-toi', '-vous', '-ci', u'-là')):  # Dealing with things like "voulez-vous"
                     s += ' ' + word.text.split('-')[0].lower()
                 else:
                     s += ' ' + word.text
@@ -54,25 +54,31 @@ def from_xml(input_files, language):
                 s = s.replace('\'s ', ' des ')
             # Special cases for French
             elif language == 'fr':
-                s = s.replace('aujourd\'hui', 'aujourd\' hui')
                 s = s.replace('Aujourd\'hui', 'Aujourd hui')
+                s = s.replace(' aujourd\'hui', ' aujourd\' hui')
 
-                s = s.replace('d\'abord', 'de abord')
+                s = s.replace(' d\'abord', ' de abord')
 
                 s = s.replace('M.', 'Mr')
                 s = s.replace('X.', 'X')
             # Special cases for Italian
             elif language == 'it':
                 s = s.replace('C\'', 'Ce ')
-                s = s.replace('c\'', 'ce ')
                 s = s.replace('N\'', 'Ne ')
-                s = s.replace('n\'', 'ne ')
-                s = s.replace('v\'', 've ')
-                s = s.replace('quell\'', 'quelle ')
-                s = s.replace('tant\'', 'tante ')
+                s = s.replace(' c\'', ' ce ')
+                s = s.replace(' n\'', ' ne ')
+                s = s.replace(' v\'', ' ve ')
+                s = s.replace(' quell\'', ' quelle ')
+                s = s.replace(' tant\'', ' tante ')
+                s = s.replace(' com\'', ' come ')
 
-                s = s.replace('po\'', 'poco \' ')
-                s = s.replace('di\'', 'di \' ')
+                s = s.replace(' po\'', ' poco \' ')
+                s = s.replace(' di\'', ' di \' ')
+            # Special cases for German
+            elif language == 'de':
+                s = s.replace(' bin.', ' bin .')
+                s = s.replace(' uns.', ' uns .')
+                s = s.replace(' geh.', ' geh .')
 
             # Tag/lemmatize the sentence
             tags = make_tags(tagger.tag_text(unicode(s)))
@@ -90,7 +96,7 @@ def from_xml(input_files, language):
                         word.attrib['lem'] = '.'
                     # Otherwise, print the sentence
                     else:
-                        eprint('IndexError: {}'.format(s))
+                        eprint(u'IndexError: {}'.format(s))
 
         # Output the result to a file
         filename, ext = os.path.splitext(in_file)
@@ -108,8 +114,8 @@ def from_txt(input_files, language):
             for line in f:
                 if line.strip():
                     lines.append('\n'.join(tagger.tag_text(line)))
-                else:
-                    lines.append('\n\n')
+
+                lines.append('\n\n')
 
             filename, ext = os.path.splitext(in_file)
             filename += '-out' + ext
