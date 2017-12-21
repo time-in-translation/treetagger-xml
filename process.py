@@ -79,6 +79,14 @@ def from_xml(input_files, language):
                 s = s.replace(' bin.', ' bin .')
                 s = s.replace(' uns.', ' uns .')
                 s = s.replace(' geh.', ' geh .')
+            elif language == 'en':
+                s = s.replace('myst\'ry', 'myst \'ry')
+                s = s.replace('D\'yeh', 'Do you')
+                s = s.replace('s\'pposed', 's supposed')
+                s = s.replace('More\'n', 'More than')
+                s = s.replace('more\'n', 'more than')
+                s = s.replace('C\'mere', 'Come here')
+                s = s.replace('C\'mon', 'Come on')
 
             # Tag/lemmatize the sentence
             tags = make_tags(tagger.tag_text(unicode(s)))
