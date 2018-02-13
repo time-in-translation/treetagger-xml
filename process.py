@@ -87,6 +87,7 @@ def from_xml(input_files, language):
                 s = s.replace('more\'n', 'more than')
                 s = s.replace('C\'mere', 'Come here')
                 s = s.replace('C\'mon', 'Come on')
+                s = s.replace('o\'clock', 'of clock')
 
             # Tag/lemmatize the sentence
             tags = make_tags(tagger.tag_text(unicode(s)))
