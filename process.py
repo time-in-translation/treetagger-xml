@@ -74,6 +74,9 @@ def from_xml(input_files, language):
 
                 s = s.replace(' po\'', ' poco \' ')
                 s = s.replace(' di\'', ' di \' ')
+
+                s = s.replace(' gliel\'ho', ' gliele ho ')
+                s = s.replace(u' dov\'è ', u' dove è ')
             # Special cases for German
             elif language == 'de':
                 s = s.replace(' bin.', ' bin .')
