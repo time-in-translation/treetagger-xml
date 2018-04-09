@@ -40,7 +40,10 @@ def from_xml(input_files, language):
             words = sentence.xpath('./w')
             for word in words:
                 if word.text[0] in [',', '.', '\'']:  # Dealing with things like "'s", "Mr." and "n't"
-                    s += word.text
+                    if prev_word.isdigit():  # But don't do this for digits
+                        s += ' ' + word.text
+                    else:
+                        s += word.text
                 elif language in ['fr', 'it'] and len(prev_word) > 1 and prev_word[-1] in ['\'']:  # Dealing with things like "j'ai"
                     s += word.text
                 elif language in ['fr'] and word.text.endswith(('-toi', '-vous', '-ci', u'-là')):  # Dealing with things like "voulez-vous"
@@ -52,6 +55,8 @@ def from_xml(input_files, language):
             # Special case for Dutch with cases like "'s middags".
             if language == 'nl':
                 s = s.replace('\'s ', ' des ')
+                s = s.replace('\'t', ' het')
+                s = s.replace('\'m', ' hem')
             # Special cases for French
             elif language == 'fr':
                 s = s.replace('Aujourd\'hui', 'Aujourd hui')
@@ -84,13 +89,18 @@ def from_xml(input_files, language):
                 s = s.replace(' geh.', ' geh .')
             elif language == 'en':
                 s = s.replace('myst\'ry', 'myst \'ry')
+                s = s.replace('d\'yeh', 'do you')
                 s = s.replace('D\'yeh', 'Do you')
-                s = s.replace('s\'pposed', 's supposed')
+                s = s.replace('d\'you', 'do you')
+                s = s.replace('D\'you', 'Do you')
+                s = s.replace('yeh\'ve', 'you have')
+                s = s.replace('closer\'n', 'closer than')
                 s = s.replace('More\'n', 'More than')
                 s = s.replace('more\'n', 'more than')
                 s = s.replace('C\'mere', 'Come here')
                 s = s.replace('C\'mon', 'Come on')
                 s = s.replace('o\'clock', 'of clock')
+                s = s.replace('No.', 'No .')
 
             # Tag/lemmatize the sentence
             tags = make_tags(tagger.tag_text(unicode(s)))
