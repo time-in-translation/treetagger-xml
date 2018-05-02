@@ -59,10 +59,14 @@ def from_xml(input_files, language):
                 s = s.replace('\'m', ' hem')
             # Special cases for French
             elif language == 'fr':
-                s = s.replace('Aujourd\'hui', 'Aujourd hui')
-                s = s.replace(' aujourd\'hui', ' aujourd\' hui')
+                s = s.replace('Aujourd\'hui', 'Jour hui')
+                s = s.replace(' aujourd\'hui', ' jour hui')
 
                 s = s.replace(' d\'abord', ' de abord')
+                s = s.replace(' d\'accord', ' de accord')
+                s = s.replace(u'D\'après', u'De après')
+
+                s = s.replace(' quelqu\'un', ' quelque un')
 
                 s = s.replace('M.', 'Mr')
                 s = s.replace('X.', 'X')
