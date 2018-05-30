@@ -63,8 +63,16 @@ def from_xml(input_files, language):
                 s = s.replace(' aujourd\'hui', ' jour hui')
 
                 s = s.replace(' d\'abord', ' de abord')
+                s = s.replace('D\'abord', 'De abord')
                 s = s.replace(' d\'accord', ' de accord')
+                s = s.replace('D\'accord', 'De accord')
+                s = s.replace(u' d\'après', u' de après')
                 s = s.replace(u'D\'après', u'De après')
+                s = s.replace('D\'ailleurs', 'De ailleurs')
+                s = s.replace(' d\'ailleurs', ' de ailleurs')
+
+                s = s.replace(u'C\'est-à-dire', u'Ce est-à-dire')
+                s = s.replace(u' c\'est-à-dire', u' ce est-à-dire')
 
                 s = s.replace(' quelqu\'un', ' quelque un')
 
