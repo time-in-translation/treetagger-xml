@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="treetagger-xml",
-    version="0.1.2",
+    version="0.1.3",
     author="Martijn van der Klis",
     author_email="m.h.vanderklis@uu.nl",
     description="Reads .xml-files and parses these with TreeTagger",
