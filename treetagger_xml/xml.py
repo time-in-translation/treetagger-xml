@@ -2,6 +2,7 @@
 
 import codecs
 import os
+import re
 
 from lxml import etree
 from treetaggerwrapper import make_tags, NotTag
@@ -21,6 +22,7 @@ def from_xml(input_files, language, in_place=False):
 
 
 def process_single(tagger, language, in_file, in_place=False):
+    eprint('Now processing {}'.format(in_file))
     tree = etree.parse(in_file)
     for sentence in tree.xpath('//s'):
         # Retrieve all words in the sentence
@@ -28,11 +30,8 @@ def process_single(tagger, language, in_file, in_place=False):
         prev_word = ' '
         words = sentence.xpath('./w')
         for word in words:
-            if word.text[0] in [',', '.', '\'']:  # Dealing with things like "'s", "Mr." and "n't"
-                if prev_word.isdigit():  # But don't do this for digits
-                    s += ' ' + word.text
-                else:
-                    s += word.text
+            if word.text[0] in ['\'']:  # Dealing with things like "'s", and "n't"
+                s += word.text
             elif language in ['fr', 'it'] and len(prev_word) > 1 and prev_word[-1] in ['\'']:  # Dealing with things like "j'ai"
                 s += word.text
             elif language in ['fr'] and word.text.endswith(('-toi', '-vous', '-ci', u'-là')):  # Dealing with things like "voulez-vous"
@@ -41,7 +40,7 @@ def process_single(tagger, language, in_file, in_place=False):
                 s += ' ' + word.text
             prev_word = word.text
 
-        s = apply_replacements(language, s)# Tag/lemmatize the sentence
+        s = apply_replacements(language, s)  # Tag/lemmatize the sentence
         tags = make_tags(tagger.tag_text(unicode(s)))
 
         # Add the tags and lemmata back to the words
@@ -70,9 +69,9 @@ def process_single(tagger, language, in_file, in_place=False):
 
 
 def apply_replacements(language, s):
-    # Special case for Dutch with cases like "'s middags".
+    # Special cases for Dutch
     if language == 'nl':
-        s = s.replace('\'s ', ' des ')
+        s = s.replace('\'s ', ' des ')  # 's middags, 's avonds
         s = s.replace('\'t', ' het')
         s = s.replace('\'m', ' hem')
     # Special cases for French
@@ -117,8 +116,18 @@ def apply_replacements(language, s):
         s = s.replace(' bin.', ' bin .')
         s = s.replace(' uns.', ' uns .')
         s = s.replace(' geh.', ' geh .')
+        s = s.replace(' komm.', ' komm .')
     # Special cases for English
     elif language == 'en':
+        # Titles
+        s = re.sub(r'(Mrs?\s\w)\.', r'\1', s, re.IGNORECASE)
+        s = re.sub(r'(Prof(?:essor|\.)?\s\w)\.', r'\1', s, re.IGNORECASE)
+
+        s = s.replace('No.', 'No .')
+        s = s.replace('o\'clock', 'of clock')
+        s = s.replace('what\'s-her-name', 'what is-her-name')
+
+        # Below are utterances by Hagrid, so even more special cases
         s = s.replace('myst\'ry', 'myst \'ry')
         s = s.replace('d\'yeh', 'do you')
         s = s.replace('D\'yeh', 'Do you')
@@ -130,7 +139,5 @@ def apply_replacements(language, s):
         s = s.replace('more\'n', 'more than')
         s = s.replace('C\'mere', 'Come here')
         s = s.replace('C\'mon', 'Come on')
-        s = s.replace('o\'clock', 'of clock')
-        s = s.replace('No.', 'No .')
 
     return s
