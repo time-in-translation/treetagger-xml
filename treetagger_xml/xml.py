@@ -71,7 +71,16 @@ def process_single(tagger, language, in_file, in_place=False):
 def apply_replacements(language, s):
     # Special cases for Dutch
     if language == 'nl':
-        s = s.replace('\'s ', ' des ')  # 's middags, 's avonds
+        s = re.sub(r'(Meneer\s\w)\.', r'\1', s, flags=re.IGNORECASE)
+        s = re.sub(r'(Heer\s\w)\.', r'\1', s, flags=re.IGNORECASE)
+        s = re.sub(r'(Mevrouw\s\w)\.', r'\1', s, flags=re.IGNORECASE)
+        s = re.sub(r'(Prof(?:essor|\.)?\s\w)\.', r'\1', s, flags=re.IGNORECASE)
+
+        s = re.sub(r'\'s\s(ochtends)', r' des \1', s, flags=re.IGNORECASE)  # 's ochtends
+        s = re.sub(r'\'s\s(middags)', r' des \1', s, flags=re.IGNORECASE)  # 's middags
+        s = re.sub(r'\'s\s(avonds)', r' des \1', s, flags=re.IGNORECASE)  # 's avonds
+        s = re.sub(r'\'s\s(nachts)', r' des \1', s, flags=re.IGNORECASE)  # 's nachts
+
         s = s.replace('\'t', ' het')
         s = s.replace('\'m', ' hem')
     # Special cases for French
@@ -120,8 +129,8 @@ def apply_replacements(language, s):
     # Special cases for English
     elif language == 'en':
         # Titles
-        s = re.sub(r'(Mrs?\s\w)\.', r'\1', s, re.IGNORECASE)
-        s = re.sub(r'(Prof(?:essor|\.)?\s\w)\.', r'\1', s, re.IGNORECASE)
+        s = re.sub(r'(Mrs?\s\w)\.', r'\1', s, flags=re.IGNORECASE)
+        s = re.sub(r'(Prof(?:essor|\.)?\s\w)\.', r'\1', s, flags=re.IGNORECASE)
 
         s = s.replace('No.', 'No .')
         s = s.replace('o\'clock', 'of clock')
