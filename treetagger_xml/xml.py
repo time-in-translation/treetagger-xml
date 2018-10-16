@@ -34,8 +34,6 @@ def process_single(tagger, language, in_file, in_place=False):
                 s += word.text
             elif language in ['fr', 'it'] and len(prev_word) > 1 and prev_word[-1] in ['\'']:  # Dealing with things like "j'ai"
                 s += word.text
-            elif language in ['fr'] and word.text.endswith(('-toi', '-vous', '-ci', u'-là')):  # Dealing with things like "voulez-vous"
-                s += ' ' + word.text.split('-')[0].lower()
             else:
                 s += ' ' + word.text
             prev_word = word.text
@@ -44,6 +42,9 @@ def process_single(tagger, language, in_file, in_place=False):
         tags = make_tags(tagger.tag_text(unicode(s)))
 
         # Add the tags and lemmata back to the words
+        if len(words) != len(tags):
+            eprint(u'# words does not match # tags: {}'.format(s))
+
         for n, word in enumerate(words):
             try:
                 if type(tags[n]) != NotTag:
@@ -52,6 +53,7 @@ def process_single(tagger, language, in_file, in_place=False):
             except IndexError:
                 # The end of a sentence is sometimes not properly recognized, deal as a special case.
                 if word.text == '.':
+                    eprint(u'End of sentence reached: {}'.format(s))
                     word.attrib[POS_TAGS.get(language, 'tree')] = SENT_TAGS.get(language, 'SENT')
                     word.attrib['lem'] = '.'
                 # Otherwise, print the sentence
@@ -83,24 +85,28 @@ def apply_replacements(language, s):
 
         s = s.replace('\'t', ' het')
         s = s.replace('\'m', ' hem')
+
+        s = s.replace('9 3/4', '9 34')  # The platform number isn't processed correctly
     # Special cases for French
     elif language == 'fr':
         s = s.replace('Aujourd\'hui', 'Jour hui')
         s = s.replace(' aujourd\'hui', ' jour hui')
 
-        s = s.replace(' d\'abord', ' de abord')
-        s = s.replace('D\'abord', 'De abord')
-        s = s.replace(' d\'accord', ' de accord')
-        s = s.replace('D\'accord', 'De accord')
         s = s.replace(u' d\'après', u' de après')
         s = s.replace(u'D\'après', u'De après')
-        s = s.replace('D\'ailleurs', 'De ailleurs')
-        s = s.replace(' d\'ailleurs', ' de ailleurs')
 
         s = s.replace(u'C\'est-à-dire', u'Ce est-à-dire')
         s = s.replace(u' c\'est-à-dire', u' ce est-à-dire')
 
-        s = s.replace(' quelqu\'un', ' quelque un')
+        s = re.sub('(d)\'abord', r'\1e abord', s, flags=re.IGNORECASE)
+        s = re.sub('(d)\'accord', r'\1e accord', s, flags=re.IGNORECASE)
+        s = re.sub('(d)\'ailleurs', r'\1e ailleurs', s, flags=re.IGNORECASE)
+        s = re.sub('(d)\'autant', r'\1e autant', s, flags=re.IGNORECASE)
+        s = re.sub(r'(quelqu)\'un', r'\1e un', s, flags=re.IGNORECASE)
+        s = re.sub(r'(va)-t\'en', r'\1-te en', s, flags=re.IGNORECASE)
+
+        s = s.replace(u'-là', u'')
+        s = re.sub(r'(\w+)-(je|moi|toi|il|lui|vous|ce|ci|y)', r'\1', s, flags=re.IGNORECASE)
 
         s = s.replace('M.', 'Mr')
         s = s.replace('X.', 'X')
@@ -126,6 +132,9 @@ def apply_replacements(language, s):
         s = s.replace(' uns.', ' uns .')
         s = s.replace(' geh.', ' geh .')
         s = s.replace(' komm.', ' komm .')
+    elif language == 'es':
+        s = re.sub(r'(Señora?\s\w)\.', r'\1', s, flags=re.IGNORECASE)
+        s = re.sub(r'(Prof(?:essor|\.)?\s\w)\.', r'\1', s, flags=re.IGNORECASE)
     # Special cases for English
     elif language == 'en':
         # Titles
@@ -137,7 +146,6 @@ def apply_replacements(language, s):
         s = s.replace('what\'s-her-name', 'what is-her-name')
 
         # Below are utterances by Hagrid, so even more special cases
-        s = s.replace('myst\'ry', 'myst \'ry')
         s = s.replace('d\'yeh', 'do you')
         s = s.replace('D\'yeh', 'Do you')
         s = s.replace('d\'you', 'do you')
@@ -148,5 +156,7 @@ def apply_replacements(language, s):
         s = s.replace('more\'n', 'more than')
         s = s.replace('C\'mere', 'Come here')
         s = s.replace('C\'mon', 'Come on')
+        s = s.replace('good\'un', 'good one')
+        s = re.sub(r'(should)n\'ta', r'\1nt have', s, flags=re.IGNORECASE)
 
     return s
