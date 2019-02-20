@@ -106,7 +106,8 @@ def apply_replacements(language, s):
         s = re.sub(r'(va)-t\'en', r'\1-te en', s, flags=re.IGNORECASE)
 
         s = s.replace(u'-là', u'')
-        s = re.sub(r'(\w+)-(je|moi|tu|toi|t-il|il|lui|la|les|vous|ce|ci|y)', r'\1', s, flags=re.IGNORECASE)
+        s = s.replace(u'-même', u'')
+        s = re.sub(r'(\w+)-(je|moi|tu|toi|t-il|il|lui|la|les|vous|ce|ci|y|en)', r'\1', s, flags=re.IGNORECASE)
 
         s = s.replace('M.', 'Mr')
         s = s.replace('X.', 'X')
