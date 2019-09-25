@@ -90,13 +90,13 @@ def apply_replacements(language, s):
     # Special cases for French
     elif language == 'fr':
         s = s.replace('Aujourd\'hui', 'Jour hui')
-        s = s.replace(' aujourd\'hui', ' jour hui')
+        s = s.replace('aujourd\'hui', 'jour hui')
 
-        s = s.replace(u' d\'après', u' de après')
+        s = s.replace(u'd\'après', u'de après')
         s = s.replace(u'D\'après', u'De après')
 
         s = s.replace(u'C\'est-à-dire', u'Ce est-à-dire')
-        s = s.replace(u' c\'est-à-dire', u' ce est-à-dire')
+        s = s.replace(u'c\'est-à-dire', u'ce est-à-dire')
 
         s = re.sub('(d)\'abord', r'\1e abord', s, flags=re.IGNORECASE)
         s = re.sub('(d)\'accord', r'\1e accord', s, flags=re.IGNORECASE)
@@ -106,6 +106,7 @@ def apply_replacements(language, s):
         s = re.sub(r'(va)-t\'en', r'\1-te en', s, flags=re.IGNORECASE)
 
         s = s.replace(u'-là', u'')
+        s = s.replace(u'-mêmes', u'')
         s = s.replace(u'-même', u'')
         s = re.sub(r'(\w+)-(je|moi|tu|toi|t-il|il|lui|la|les|vous|ce|ci|y|en)', r'\1', s, flags=re.IGNORECASE)
 
