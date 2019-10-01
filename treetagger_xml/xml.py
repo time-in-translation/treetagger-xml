@@ -114,20 +114,10 @@ def apply_replacements(language, s):
         s = s.replace('X.', 'X')
     # Special cases for Italian
     elif language == 'it':
-        s = s.replace('C\'', 'Ce ')
-        s = s.replace('N\'', 'Ne ')
-        s = s.replace(' c\'', ' ce ')
-        s = s.replace(' n\'', ' ne ')
-        s = s.replace(' v\'', ' ve ')
-        s = s.replace(' quell\'', ' quelle ')
-        s = s.replace(' tant\'', ' tante ')
-        s = s.replace(' com\'', ' come ')
+        s = s.replace(u'\'è', u'e è')
+        s = re.sub(r'\'([eaihou])', r'e \1', s, flags=re.IGNORECASE)
 
-        s = s.replace(' po\'', ' poco \' ')
-        s = s.replace(' di\'', ' di \' ')
-
-        s = s.replace(' gliel\'ho', ' gliele ho ')
-        s = s.replace(u' dov\'è ', u' dove è ')
+        s = re.sub(r'(Mrs?\s\w)\.', r'\1', s, flags=re.IGNORECASE)
     # Special cases for German
     elif language == 'de':
         s = s.replace(' bin.', ' bin .')
