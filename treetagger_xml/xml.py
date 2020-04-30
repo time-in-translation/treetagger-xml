@@ -39,7 +39,7 @@ def process_single(tagger, language, in_file, in_place=False):
             prev_word = word.text
 
         s = apply_replacements(language, s)  # Tag/lemmatize the sentence
-        tags = make_tags(tagger.tag_text(unicode(s)))
+        tags = make_tags(tagger.tag_text(s))
 
         # Add the tags and lemmata back to the words
         if len(words) != len(tags):
@@ -62,12 +62,12 @@ def process_single(tagger, language, in_file, in_place=False):
 
     # Output the result to a file
     if in_place:
-        filename = in_file
+        out_file = in_file
     else:
-        filename, ext = os.path.splitext(in_file)
-        filename += '-out' + ext
-    with codecs.open(filename, 'w') as out_file:
-        out_file.write(etree.tostring(tree, encoding='utf-8', pretty_print=True, xml_declaration=True))
+        out_file, ext = os.path.splitext(in_file)
+        out_file += '-out' + ext
+
+    tree.write(out_file, pretty_print=True, xml_declaration=True, encoding='utf-8')
 
 
 def apply_replacements(language, s):

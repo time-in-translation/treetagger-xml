@@ -10,7 +10,7 @@ See [the TreeTagger website](http://www.cis.uni-muenchen.de/~schmid/tools/TreeTa
 
 ### Python
 
-This script runs in Python 2.7 and requires two external packages to run: [lxml](http://lxml.de/) and [treetaggerwrapper](http://treetaggerwrapper.readthedocs.io/en/latest/). The latter requires [six](https://pythonhosted.org/six/) to be installed as well. You can install these packages either locally (in a [virtualenv](http://virtualenv.readthedocs.io/en/latest/)) or globally via running:
+This script runs in Python 3 and requires two external packages to run: [lxml](http://lxml.de/) and [treetaggerwrapper](http://treetaggerwrapper.readthedocs.io/en/latest/). The latter requires [six](https://pythonhosted.org/six/) to be installed as well. You can install these packages either locally (in a [virtualenv](http://virtualenv.readthedocs.io/en/latest/)) or globally via running:
 
 	pip install -r requirements.txt
 
@@ -22,8 +22,8 @@ Before running the script, it's best to set an environment variable with the loc
 
 Alternatively, you can modify `process.py` and hard-code your installation path in the TreeTagger instantation.
 
-Then, you can run the `process.py` script. It requires two parameters: your language of choice for parsing and lemmatizing, and your input file(s). In the `examples/` directory you can find some example .xml-files. Run
+Then, you can run the `process.py` script. It requires three parameters: your input format (xml or txt), your language of choice for parsing and lemmatizing, and your input file(s). In the `examples/` directory you can find some example .xml-files. Run
 
-	python process.py en examples/en.xml
+	python process.py xml en examples/en.xml
 
 to process the English example. The resulting file will be named `examples/en-out.xml`.
