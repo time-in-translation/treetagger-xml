@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="treetagger-xml",
-    version="0.1.3",
+    version="0.1.5",
     author="Martijn van der Klis",
     author_email="m.h.vanderklis@uu.nl",
     description="Reads .xml-files and parses these with TreeTagger",
@@ -16,9 +16,9 @@ setuptools.setup(
     license="MIT",
     classifiers=[
         "Topic :: Text Processing :: Linguistic",
-        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
+        "Operating System :: POSIX :: Linux",
     ],
     install_requires=[
         'lxml', 'six', 'treetaggerwrapper'

@@ -7,7 +7,7 @@ import re
 from lxml import etree
 from treetaggerwrapper import make_tags, NotTag
 
-from utils import eprint, instantiate_tagger
+from .utils import eprint, instantiate_tagger
 
 
 POS_TAGS = {'de': 'tree', 'en': 'tree', 'es': 'tree', 'fr': 'pos', 'it': 'pos', 'nl': 'tree', 'pl': 'tree', 'ru': 'tree'}

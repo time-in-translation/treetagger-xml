@@ -3,7 +3,7 @@
 import codecs
 import os
 
-from utils import instantiate_tagger
+from .utils import instantiate_tagger
 
 
 def from_txt(input_files, language, in_place=False):
