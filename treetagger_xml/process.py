@@ -4,9 +4,9 @@ from __future__ import print_function
 
 import argparse
 
-from .txt import from_txt
-from .utils import eprint
-from .xml import from_xml
+from treetagger_xml.txt import from_txt
+from treetagger_xml.utils import eprint
+from treetagger_xml.xml import from_xml
 
 
 if __name__ == "__main__":
