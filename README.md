@@ -1,6 +1,7 @@
 # treetagger-xml
 
-This is a simple script (`process.py`) that reads in a .xml-file, uses TreeTagger to parse/lemmatize each sentence, and then to output the input file with the tags and lemmata appended to the word elements.
+This is a simple script (`process.py`) that reads in a .xml-file in the [OPUS format](http://opus.nlpl.eu/), uses [TreeTagger](http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/) to parse/lemmatize each sentence, an appends this information to the word elements in the original .xml-file.
+The script also facilitates tagging a .txt-file and then converting the tab-separated output from TreeTagger to the OPUS format.
 
 ## Requirements
 
@@ -27,3 +28,11 @@ Then, you can run the `process.py` script. It requires three parameters: your in
 	python process.py xml en examples/en.xml
 
 to process the English example. The resulting file will be named `examples/en-out.xml`.
+
+### Processing plain text
+
+Processing plain text requires you to set the first argument to `txt` rather than `xml`. For example:
+
+    python process.py txt en examples/en.txt
+    
+This script will output a tab-separated file (`examples/en.tab`) as well as an .xml-file in the OPUS format (`examples/en.xml`).
