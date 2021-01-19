@@ -61,7 +61,7 @@ def process(file_in, file_out, sentence_tokenized=False):
                 # Peek forward if we're not dealing with a dialogue
                 if lines[n+1]:
                     _, next_tag, _ = split_line(lines[n+1], n+1)
-                    if next_tag in ['Z.Quo'] or (lemma != ':' and next_tag in ['PUNCT']):
+                    if next_tag in ['Z.Quo'] or (lemma != ':' and next_tag in ['PUNCT', 'PT']):
                         end_after_next = True
                     else:
                         sentence_start = True
