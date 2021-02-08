@@ -5,8 +5,10 @@ import codecs
 
 from lxml import etree
 
+from .constants import SENT_TAGS
 
-def process(file_in, file_out, sentence_tokenized=False):
+
+def process(language, file_in, file_out, sentence_tokenized=False):
     with codecs.open(file_in, 'r', encoding='utf-8') as f:
         text = etree.Element('text')
 
@@ -55,9 +57,7 @@ def process(file_in, file_out, sentence_tokenized=False):
                 sentence_start = True
                 end_after_next = False
 
-            # The 'SENT' marks a sentence end in Greek, Z.Fst, Z.Int, Z.Exc for Estonian,
-            # PUNCT.Final for Catalan, Fp for Portuguese, PT_SENT for Bulgarian
-            if not sentence_tokenized and tag in ['SENT', 'Z.Fst', 'Z.Int', 'Z.Exc', 'PUNCT.Final', 'Fp', 'PT_SENT']:
+            if not sentence_tokenized and tag in get_sentence_endings(language):
                 # Peek forward if we're not dealing with a dialogue
                 if lines[n+1]:
                     _, next_tag, _ = split_line(lines[n+1], n+1)
@@ -70,6 +70,13 @@ def process(file_in, file_out, sentence_tokenized=False):
 
         tree = etree.ElementTree(text)
         tree.write(file_out, pretty_print=True, xml_declaration=True, encoding='utf-8')
+
+
+def get_sentence_endings(language):
+    sentence_endings = SENT_TAGS[language]
+    if isinstance(sentence_endings, str):
+        sentence_endings = [sentence_endings]
+    return sentence_endings
 
 
 def split_line(line, n):
@@ -94,9 +101,10 @@ def split_line(line, n):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    parser.add_argument('language', help='Language')
     parser.add_argument('file_in', help='Input file')
     parser.add_argument('file_out', help='Output file')
     parser.add_argument('--tok', action='store_true', help='Is the file sentence-tokenized?')
     args = parser.parse_args()
 
-    process(args.file_in, args.file_out, args.tok)
+    process(args.language, args.file_in, args.file_out, args.tok)

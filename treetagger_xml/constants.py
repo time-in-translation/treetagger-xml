@@ -1,0 +1,31 @@
+POS_TAGS = {
+    'de': 'tree',
+    'en': 'tree',
+    'es': 'tree',
+    'fr': 'pos',
+    'it': 'pos',
+    'nl': 'tree',
+    'pl': 'tree',
+    'ru': 'tree',
+    'el': 'tree',
+    'et': 'tree',
+    'ca': 'tree',
+    'pt': 'tree',
+    'bg': 'tree',
+}
+
+SENT_TAGS = {
+    'de': '$.',
+    'en': 'SENT',
+    'es': 'FS',
+    'fr': 'SENT',
+    'it': 'SENT',
+    'nl': '$.',
+    'pl': 'interp',
+    'ru': 'SENT',
+    'el': 'SENT',
+    'et': ['Z.Fst', 'Z.Int', 'Z.Exc'],
+    'ca': 'PUNCT.Final',
+    'pt': 'Fp',
+    'bg': 'PT_SENT',
+}

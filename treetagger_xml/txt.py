@@ -11,10 +11,10 @@ def from_txt(input_files, language, in_place=False):
     tagger = instantiate_tagger(language)
 
     for in_file in input_files:
-        process_single(tagger, in_file, in_place)
+        process_single(tagger, language, in_file, in_place)
 
 
-def process_single(tagger, in_file, in_place=False, out_file=None):
+def process_single(tagger, language, in_file, in_place=False, out_file=None):
     with codecs.open(in_file, 'r', encoding='utf-8') as f:
         lines = []
         for line in f:
@@ -34,4 +34,4 @@ def process_single(tagger, in_file, in_place=False, out_file=None):
     if not out_file:
         out_file = os.path.splitext(tag_file)[0] + '.xml'
 
-    tag2xml(tag_file, out_file)
+    tag2xml(language, tag_file, out_file)

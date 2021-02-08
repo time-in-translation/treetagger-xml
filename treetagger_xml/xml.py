@@ -1,17 +1,13 @@
 # -*- coding: utf-8 -*-
 
-import codecs
 import os
 import re
 
 from lxml import etree
 from treetaggerwrapper import make_tags, NotTag
 
+from .constants import POS_TAGS, SENT_TAGS
 from .utils import eprint, instantiate_tagger
-
-
-POS_TAGS = {'de': 'tree', 'en': 'tree', 'es': 'tree', 'fr': 'pos', 'it': 'pos', 'nl': 'tree', 'pl': 'tree', 'ru': 'tree'}
-SENT_TAGS = {'de': '$.', 'en': 'SENT', 'es': 'FS', 'fr': 'SENT', 'it': 'SENT', 'nl': '$.', 'pl': 'interp', 'ru': 'SENT'}
 
 
 def from_xml(input_files, language, in_place=False):
